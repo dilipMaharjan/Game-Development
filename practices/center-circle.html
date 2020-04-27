@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<canvas />
+
+<body>
+    <script>
+        let canvas = document.querySelector('canvas');
+        ctx = canvas.getContext('2d');
+        var radius = 10;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        createCanvas();
+        setInterval(update, 1000);
+
+        function update() {
+            createCircle();
+
+        }
+        function createCanvas() {
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+        function createCircle() {
+            ctx.beginPath();
+            ctx.strokeStyle = 'white';
+            ctx.arc(canvas.width / 2, canvas.height / 2, radius, 0, Math.PI * 2, true);
+            ctx.stroke();
+            radius += 10;
+        }
+    </script>
+</body>
+
+</html>

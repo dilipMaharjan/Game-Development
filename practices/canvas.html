@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas</title>
+</head>
+
+<body>
+    <canvas></canvas>
+    <script>
+        var canvas = document.querySelector('canvas');
+        var ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // ctx.fillRect(x,y,width,height);
+        let fillRect = (x, y, width, height, fillColor) => {
+            ctx.fillStyle = fillColor;
+            ctx.fillRect(x, y, width, height);
+        }
+        //line
+        let drawLine = (x, y) => {
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(300, 200);
+            ctx.lineTo(200, 500);
+            ctx.strokeStyle = 'purple';
+            ctx.stroke();
+        }
+
+        //circle
+        let circle = (x, y, fillColor) => {
+            ctx.beginPath();
+            ctx.strokeStyle = fillColor;
+            ctx.arc(x, y, 30, 0, Math.PI * 2, false);
+            ctx.stroke();
+        }
+        canvas.addEventListener('mousemove', (e) => {
+            let x = e.clientX;
+            let y = e.clientY;
+            circle(x, y, 'blue');
+            circle(x + 5, y + 5, 'green');
+            circle(x + 10, y + 10, 'red');
+            circle(x + 15, y + 15, 'yellow');
+        }, false);
+        canvas.addEventListener('click', (evnt) => {
+            ctx.clearRect(evnt.clientX, evnt.clientY, 300, 300);
+        }, false);
+        fillRect(720, 160, 600, 600, 'red');
+        fillRect(710, 165, 600, 600, 'green');
+        fillRect(700, 170, 600, 600, 'yellow');
+        fillRect(690, 175, 600, 600, 'pink');
+        fillRect(680, 180, 600, 600, 'teal');
+        drawLine(50, 300);
+    </script>
+</body>
+
+</html>
